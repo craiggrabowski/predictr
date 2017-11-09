@@ -15,3 +15,6 @@ LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
+Collate: 
+    'predictr.R'
+    'intercept.R'
