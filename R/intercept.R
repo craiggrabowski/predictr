@@ -6,7 +6,13 @@ Intercept <-
 setClass("Intercept",
   slots = list(
     data = "numeric"
-  )
+  ),
+  validity = function(object) {
+    if (any(is.na(object@data)))
+      return("intercept can't have missing values")
+
+    TRUE
+  }
 )
 
 #' Returns an intercept object
