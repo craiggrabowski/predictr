@@ -3,7 +3,7 @@
 predictr
 ========
 
-The goal of predictr is to ...
+The goal of predictr is to allow for model predictions which minimize memory usage and computing time. This package provides a new type of object and adaptors for various common model types.
 
 Installation
 ------------
