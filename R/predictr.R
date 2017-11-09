@@ -12,3 +12,6 @@
 #' @docType package
 #' @name predictr
 NULL
+
+#' @importFrom methods new
+NULL
