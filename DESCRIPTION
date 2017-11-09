@@ -12,3 +12,4 @@ Description: This package allows a user to convert existing model
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
