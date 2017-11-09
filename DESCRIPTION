@@ -1,0 +1,14 @@
+Package: predictr
+Type: Package
+Title: Objects For Fast Predictions Of Common Model Types
+Version: 0.0.0.9000
+Author: person("Craig", "Grabowski", 
+    email = "craig.a.grabowski@gmail.com",             
+    role = c("aut", "cre"))
+Maintainer: Craig Grabowski <craig.a.grabowski@gmail.com>
+Description: This package allows a user to convert existing model
+    objects into an optimized version which minimizes object
+    size, memory usage, and compute time.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
