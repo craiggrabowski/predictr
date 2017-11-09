@@ -18,5 +18,5 @@ setClass("Intercept",
 #'
 #' @export
 intercept <- function(x = 0) {
-  Intersept(data = as.numeric(x))
+  Intercept(data = as.numeric(x))
 }
