@@ -7,8 +7,8 @@
 intercept(x = 0)
 }
 \arguments{
-\item{x}{Intersept vector (default to 0)}
+\item{x}{Intercept vector (default to 0)}
 }
 \description{
-\code{intercept} returns an intersept object.
+\code{intercept} returns an intercept object.
 }

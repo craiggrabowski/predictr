@@ -17,10 +17,10 @@ setClass("Intercept",
 
 #' Returns an intercept object
 #'
-#' \code{intercept} returns an intersept object.
+#' \code{intercept} returns an intercept object.
 #'
 #'
-#' @param x Intersept vector (default to 0)
+#' @param x Intercept vector (default to 0)
 #'
 #' @export
 intercept <- function(x = 0) {
