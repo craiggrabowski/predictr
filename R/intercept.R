@@ -38,3 +38,28 @@ as.function.Intercept <- function(x, ...) {
     )
   }
 }
+
+#' Return a list of intercept objects
+#'
+#' \code{as.intercept_list} returns a list of intercept objects.
+#'
+#' This method extracts the intercept information from a model
+#' object.
+#' If the object has an intercept,
+#' the return value is a list of length one
+#' whose inner object is an intercept object.
+#' If the object does not have an intercept,
+#' the return value is an empty list.
+#'
+#' @param x Object to convert to intercepts
+#'
+#' @param ... Other options
+#'
+#' @return A list of intercept objects of length 0 or 1
+#'
+#' @export
+as.intercept_list <- function(x, ...)
+  UseMethod("as.intercept_list")
+
+#' @export
+as.intercept_list.default <- function(x, ...) list()
