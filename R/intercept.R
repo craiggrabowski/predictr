@@ -26,3 +26,15 @@ setClass("Intercept",
 intercept <- function(x = 0) {
   Intercept(data = as.numeric(x))
 }
+
+
+#' @export
+as.function.Intercept <- function(x, ...) {
+  function(df) {
+    matrix(x@data,
+           nrow = nrow(df),
+           ncol = length(x@data),
+           byrow = TRUE
+    )
+  }
+}
