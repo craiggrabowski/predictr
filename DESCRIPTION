@@ -15,7 +15,8 @@ LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr
-Collate:
+Collate: 
     'predictr.R'
     'intercept.R'
+    'linear.R'
 Imports: methods
