@@ -19,4 +19,5 @@ Collate:
     'predictr.R'
     'intercept.R'
     'linear.R'
+    'lm.R'
 Imports: methods
