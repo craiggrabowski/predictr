@@ -15,4 +15,11 @@ as.intercept_list.lm <- function(x, ...) {
   list(intercept(n))
 }
 
+as.linear_list.lm <- function(x, ...) {
+  y <- coef(x)
+  y <- y[names(y) != lm_intercept_string]
 
+  lapply(seq_along(y), function(i)
+    linear(names(y)[i], y[i])
+  )
+}
