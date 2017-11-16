@@ -17,10 +17,11 @@ Suggests: testthat,
     covr,
     pryr,
     microbenchmark
-Collate:
+Collate: 
     'predictr.R'
     'intercept.R'
     'linear.R'
     'lm.R'
+    'lookup.R'
     'predictor.R'
 Imports: methods
