@@ -29,3 +29,22 @@ test_that("as.linear_list returns list() when no linear terms", {
 
   lapply(xx, f)
 })
+
+test_that("predictor produces same predictions", {
+  df <- data.frame(x = seq(12L), y = seq(12L) + 1L)
+  f <- function(x) {
+      expect_equal(
+        as.numeric(predict(predictor(x), df)),
+        { z <- predict(x, df); names(z) <- NULL; z }
+      )
+  }
+
+  xx <- list(
+    lm(y ~ 1, df),
+    lm(y ~ x, df),
+    lm(y ~ x + 0, df)
+  )
+
+  lapply(xx, f)
+})
+
