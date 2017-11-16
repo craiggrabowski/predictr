@@ -5,6 +5,7 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
+devtools::load_all()
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -35,8 +36,42 @@ devtools::install_github("craiggrabowski/predictr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which illustrates the main method:
 
 ```{r example}
 ## basic example code
+v <- seq(1024)
+df <- data.frame(x = v, y = v + 1)
+model <- lm(y ~ x, df)
+x <- predictor(model)
+predict(x, data.frame(x = c(2, 3)))
+```
+
+In this example,
+we call predictor on a model object produced using linear
+regression.
+This new object implements the predict method,
+except now the output is expressed as a matrix.
+There are a few reasons for performing this extra step.
+First,
+the new object is significantly smaller than the existing model
+object:
+
+```{r}
+pryr::object_size(model)
+pryr::object_size(x)
+```
+
+Second,
+the predict method is now faster for large data:
+```{r}
+a <- data.frame(x = seq(100000))
+microbenchmark::microbenchmark(predict(model, a), predict(x, a))
+```
+
+Third,
+the new object converts to a predict function which is even faster:
+```{r}
+f <- as.function(x)
+microbenchmark::microbenchmark(predict(x, a), f(a))
 ```
