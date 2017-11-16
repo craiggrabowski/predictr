@@ -15,3 +15,6 @@ NULL
 
 #' @importFrom methods new
 NULL
+
+#' @importFrom stats coef
+NULL

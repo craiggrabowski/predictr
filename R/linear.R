@@ -40,3 +40,22 @@ as.function.Linear <- function(x, ...) {
     .subset2(df, name) %*% t(v)
   }
 }
+
+
+#' A method to generate linear objects
+#'
+#' \code{as.linear_list} returns a list of linear objects.
+#'
+#' This method converts objects into a list of the linear terms
+#' within the (model) object,
+#' or an empty list if the supplied object has no corresponding
+#' linear terms.
+#'
+#' @param x Object to be converted
+#'
+#' @param ... Additional options
+#'
+#' @export
+as.linear_list <- function(x, ...)
+  UseMethod("as.linear_list")
+
