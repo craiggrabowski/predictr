@@ -23,3 +23,14 @@ test_that("Can't have missing values", {
 test_that("Can create basic object", {
   expect_true({ linear("x"); TRUE })
 })
+
+test_that("Converts to function as expected", {
+  df <- data.frame(x = seq(12L))
+  x <- linear("x", data = seq(2))
+  f <- as.function(x)
+
+  expect_equal(
+    f(df),
+    cbind(df$x, 2 * df$x)
+  )
+})
