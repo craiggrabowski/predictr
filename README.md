@@ -1,7 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-    ## Loading predictr
-
 predictr
 ========
 
@@ -51,12 +49,12 @@ Second, the predict method is now faster for large data:
 a <- data.frame(x = seq(100000))
 microbenchmark::microbenchmark(predict(model, a), predict(x, a))
 #> Unit: milliseconds
-#>               expr       min        lq      mean   median       uq
-#>  predict(model, a) 19.506860 23.717283 30.997413 26.32266 28.97714
-#>      predict(x, a)  2.454093  2.841267  6.167095  3.29282  5.51482
+#>               expr       min        lq      mean    median        uq
+#>  predict(model, a) 22.310242 24.611107 34.950690 27.360280 30.834233
+#>      predict(x, a)  2.442478  2.836013  4.596194  3.171206  4.811193
 #>       max neval
-#>  85.31133   100
-#>  49.27016   100
+#>  80.56022   100
+#>  48.63521   100
 ```
 
 Third, the new object converts to a predict function which is even faster:
@@ -65,9 +63,9 @@ Third, the new object converts to a predict function which is even faster:
 f <- as.function(x)
 microbenchmark::microbenchmark(predict(x, a), f(a))
 #> Unit: microseconds
-#>           expr      min        lq      mean   median       uq       max
-#>  predict(x, a) 2426.930 2525.1380 3520.1553 2627.052 3180.952 46215.425
-#>           f(a)  519.401  527.9195  799.4557  555.207 1190.919  2034.474
+#>           expr      min        lq     mean    median       uq       max
+#>  predict(x, a) 2421.916 2535.7430 3611.650 2712.5435 3255.985 45110.072
+#>           f(a)  520.497  541.2795  829.199  567.9105 1192.124  4044.157
 #>  neval
 #>    100
 #>    100
