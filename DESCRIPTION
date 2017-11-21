@@ -21,7 +21,7 @@ Collate:
     'predictr.R'
     'intercept.R'
     'linear.R'
-    'lm.R'
     'lookup.R'
+    'lm.R'
     'predictor.R'
 Imports: methods

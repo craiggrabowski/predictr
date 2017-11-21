@@ -1,5 +1,6 @@
 #' @include intercept.R
 #' @include linear.R
+#' @include lookup.R
 NULL
 
 lm_intercept_string <- "(Intercept)"
