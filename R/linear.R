@@ -1,8 +1,8 @@
 #' @include predictr.R
 NULL
 
-Linear <-
-setClass("Linear",
+Vector <-
+setClass("Vector",
   slots = list(
     name = "character",
     data = "numeric"
@@ -12,11 +12,15 @@ setClass("Linear",
       return("Name must be a scalar")
 
     if (any(is.na(object@data)))
-      return("Linear can't have missing values")
+      return("Data can't have missing values")
 
     TRUE
   }
 )
+
+Linear <-
+setClass("Linear", contains = "Vector")
+
 
 #' Returns a linear object
 #'

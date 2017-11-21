@@ -8,7 +8,7 @@ test_that("Name must be a scalar", {
 test_that("Can't have missing values", {
   f <- function(x) expect_error(
     linear("x", data = x),
-    "Linear can't have missing values"
+    "Data can't have missing values"
   )
 
   xx <- list(
