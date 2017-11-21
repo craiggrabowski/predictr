@@ -17,4 +17,5 @@ NULL
 NULL
 
 #' @importFrom stats coef
+#' @importFrom stats terms
 NULL
