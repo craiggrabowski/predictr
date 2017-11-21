@@ -20,7 +20,7 @@ devtools::install_github("craiggrabowski/predictr")
 Example
 -------
 
-This is a basic example which illustrates the main method:
+This is a basic example which illustrates `predictor()`, the main method defined in this package:
 
 ``` r
 ## basic example code
@@ -34,7 +34,9 @@ predict(x, data.frame(x = c(2, 3)))
 #> [2,]    4
 ```
 
-In this example, we call predictor on a model object produced using linear regression. This new object implements the predict method, except now the output is expressed as a matrix. There are a few reasons for performing this extra step. First, the new object is significantly smaller than the existing model object:
+We create a model object using linear regression and then convert to a new object using `predictor()`. This new object implements the `predict()` method, but its implementation does not produce the same results as the original regression object. In particular, the output is now expressed as a matrix instead of a numeric vector.
+
+The new object created by `predictor()` has a few advantages over the object produced using a call to `lm()`. First, the new object is significantly smaller than the existing model object:
 
 ``` r
 pryr::object_size(model)
@@ -43,29 +45,29 @@ pryr::object_size(x)
 #> 1.61 kB
 ```
 
-Second, the predict method is now faster for large data:
+Second, the `predict()` method is now faster for large data:
 
 ``` r
 a <- data.frame(x = seq(100000))
 microbenchmark::microbenchmark(predict(model, a), predict(x, a))
 #> Unit: milliseconds
 #>               expr       min        lq      mean    median        uq
-#>  predict(model, a) 22.310242 24.611107 34.950690 27.360280 30.834233
-#>      predict(x, a)  2.442478  2.836013  4.596194  3.171206  4.811193
-#>       max neval
-#>  80.56022   100
-#>  48.63521   100
+#>  predict(model, a) 19.921669 24.164629 33.914053 26.495027 29.274725
+#>      predict(x, a)  2.579478  3.006354  5.845861  3.518158  5.264399
+#>        max neval
+#>  103.05793   100
+#>   63.20291   100
 ```
 
-Third, the new object converts to a predict function which is even faster:
+Third, the new object supports a conversion to a function using `as.function()`. This return value of this converion is a function which implements `predict()` as well, only now the compute time is much smaller:
 
 ``` r
 f <- as.function(x)
 microbenchmark::microbenchmark(predict(x, a), f(a))
 #> Unit: microseconds
-#>           expr      min        lq     mean    median       uq       max
-#>  predict(x, a) 2421.916 2535.7430 3611.650 2712.5435 3255.985 45110.072
-#>           f(a)  520.497  541.2795  829.199  567.9105 1192.124  4044.157
+#>           expr      min        lq     mean    median       uq      max
+#>  predict(x, a) 2532.859 2654.7950 3098.863 2906.9775 3456.623  4614.86
+#>           f(a)  505.241  512.2505 1211.987  546.8825  780.943 49529.01
 #>  neval
 #>    100
 #>    100

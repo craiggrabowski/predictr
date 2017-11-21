@@ -36,7 +36,7 @@ devtools::install_github("craiggrabowski/predictr")
 
 ## Example
 
-This is a basic example which illustrates the main method:
+This is a basic example which illustrates `predictor()`, the main method defined in this package:
 
 ```{r example}
 ## basic example code
@@ -47,12 +47,17 @@ x <- predictor(model)
 predict(x, data.frame(x = c(2, 3)))
 ```
 
-In this example,
-we call predictor on a model object produced using linear
-regression.
-This new object implements the predict method,
-except now the output is expressed as a matrix.
-There are a few reasons for performing this extra step.
+We create a model object using linear regression
+and then convert to a new object using `predictor()`.
+This new object implements the `predict()` method,
+but its implementation does not produce the same results as
+the original regression object.
+In particular,
+the output is now expressed as a matrix
+instead of a numeric vector.
+
+The new object created by `predictor()` has a few advantages
+over the object produced using a call to `lm()`.
 First,
 the new object is significantly smaller than the existing model
 object:
@@ -63,14 +68,18 @@ pryr::object_size(x)
 ```
 
 Second,
-the predict method is now faster for large data:
+the `predict()` method is now faster for large data:
 ```{r}
 a <- data.frame(x = seq(100000))
 microbenchmark::microbenchmark(predict(model, a), predict(x, a))
 ```
 
 Third,
-the new object converts to a predict function which is even faster:
+the new object supports a conversion to a function
+using `as.function()`.
+This return value of this converion 
+is a function which implements `predict()` as well,
+only now the compute time is much smaller:
 ```{r}
 f <- as.function(x)
 microbenchmark::microbenchmark(predict(x, a), f(a))
