@@ -28,11 +28,11 @@ as.function.Lookup <- function(x, ...) {
 
   n <- x@name
   m <- x@data
-  labels <- x@labels
+  levels <- x@levels
 
   function(df) {
     v <- .subset2(df, n)
-    I <- match(v, labels)
+    I <- match(v, levels)
     m[I,]
   }
 }

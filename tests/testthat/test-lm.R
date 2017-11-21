@@ -48,3 +48,19 @@ test_that("predictor produces same predictions", {
   lapply(xx, f)
 })
 
+test_that("predictor works on categorical models", {
+  df <- data.frame(x = rep(c("a", "b"), 6L), y = rep(seq(2L), 6L))
+  f <- function(x) {
+    expect_equal(
+      as.numeric(predict(predictor(x), df)),
+      { z <- predict(x, df); names(z) <- NULL; z }
+    )
+  }
+
+  xx <- list(
+    lm(y ~ x, df),
+    lm(y ~ x + 0, df)
+  )
+
+  lapply(xx, f)
+})
