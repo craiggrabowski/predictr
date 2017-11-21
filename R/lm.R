@@ -17,8 +17,12 @@ as.intercept_list.lm <- function(x, ...) {
 }
 
 as.linear_list.lm <- function(x, ...) {
+  t <- attr(terms(x), "dataClasses")[-1L]
+  I <- t %in% c("numeric", "integer")
+
   y <- coef(x)
-  y <- y[names(y) != lm_intercept_string]
+  J <- match(names(y), names(t)[I])
+  y <- y[!is.na(J)]
 
   lapply(seq_along(y), function(i)
     linear(names(y)[i], y[i])
