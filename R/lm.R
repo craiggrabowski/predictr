@@ -28,3 +28,7 @@ as.linear_list.lm <- function(x, ...) {
     linear(names(y)[i], y[i])
   )
 }
+
+as.lookup_list.lm <- function(x, ...) {
+  list()
+}
