@@ -30,5 +30,20 @@ as.linear_list.lm <- function(x, ...) {
 }
 
 as.lookup_list.lm <- function(x, ...) {
-  list()
+  t <- attr(terms(x), "dataClasses")[-1L]
+  I <- t %in% c("character", "factor")
+  v <- coef(x)
+
+  lapply(names(t)[I], function(s) {
+    levels <- x$xlevels[[s]]
+    m <- matrix(0, ncol = 1L, nrow = length(levels))
+    pattern <- paste0("^", s)
+    J <- grepl(pattern, names(v))
+    K <- gsub(pattern, "", names(v)[J])
+    L <- match(K, levels)
+    m[L,] <- v[J]
+
+    lookup(x = s, data = m, levels = levels)
+  })
+
 }
