@@ -70,3 +70,21 @@ test_that("predictor works on categorical models", {
 
   lapply(xx, f)
 })
+
+test_that("predictor works on models with booleans", {
+  df <- data.frame(
+    x = rep(c(FALSE, TRUE), 6L),
+    y = rep(seq(2), 6L)
+  )
+
+  f <- function(x) expect_equal(
+    as.numeric(predict(predictor(x), df)),
+    { x <- predict(x, df); names(x) <- NULL; x}
+  )
+  xx <- list(
+    lm(y ~ x, df)
+    # lm(y ~ x + 0, df)
+  )
+
+  lapply(xx, f)
+})

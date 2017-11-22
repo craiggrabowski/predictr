@@ -41,7 +41,8 @@ predict.Predictor <- function(object, ...) {
 predictor.default <- function(x, ...) Predictor(data = c(
   as.intercept_list(x, ...),
   as.linear_list(x, ...),
-  as.lookup_list(x, ...)
+  as.lookup_list(x, ...),
+  as.boolean_list(x, ...)
 ))
 
 predictor.Predictor <- function(x, ...) x

@@ -47,3 +47,20 @@ as.lookup_list.lm <- function(x, ...) {
   })
 
 }
+
+
+as.boolean_list.lm <- function(x, ...) {
+  t <- attr(terms(x), "dataClasses")[-1L]
+  I <- t %in% c("logical")
+  v <- coef(x)
+
+  lapply(names(t)[I], function(s) {
+    pattern <- paste0("^", s, "TRUE")
+    J <- grepl(pattern, names(v))
+    data <- v[J]
+    names(data) <- NULL
+
+    boolean(x = s, data = data)
+  })
+
+}
