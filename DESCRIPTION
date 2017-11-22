@@ -19,10 +19,10 @@ Suggests: testthat,
     microbenchmark
 Collate: 
     'predictr.R'
-    'linear.R'
+    'lookup.R'
     'boolean.R'
     'intercept.R'
-    'lookup.R'
+    'linear.R'
     'lm.R'
     'predictor.R'
 Imports: methods

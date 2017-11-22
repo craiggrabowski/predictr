@@ -4,13 +4,13 @@
 \alias{boolean}
 \title{Returns a boolean object}
 \usage{
-boolean(x, data = 0)
+boolean(x, data = matrix())
 }
 \arguments{
 \item{x}{Name of object}
 
-\item{data}{vector (defaults to 0)}
+\item{data}{matrix}
 }
 \description{
-\code{linear} returns an boolean object.
+\code{boolean} returns an boolean object.
 }

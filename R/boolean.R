@@ -1,33 +1,21 @@
 #' @include predictr.R
-#' @include linear.R
+#' @include lookup.R
 NULL
-
-Boolean <-
-setClass("Boolean", contains = "Vector")
 
 #' Returns a boolean object
 #'
-#' \code{linear} returns an boolean object.
+#' \code{boolean} returns an boolean object.
 #'
 #'
 #' @param x Name of object
 #'
-#' @param data vector (defaults to 0)
+#' @param data matrix
 #'
 #' @export
-boolean <- function(x, data = 0) {
-  Boolean(name = x, data = as.numeric(data))
+boolean <- function(x, data = matrix()) {
+  Lookup(name = x, data = data, levels = c(FALSE, TRUE))
 }
 
-
-as.function.Boolean <- function(x, ...) {
-  name <- x@name
-  v <- x@data
-
-  function(df) {
-    .subset2(df, name) %*% t(v)
-  }
-}
 
 #' A method to generate boolean objects
 #'

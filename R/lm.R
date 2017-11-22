@@ -55,12 +55,15 @@ as.boolean_list.lm <- function(x, ...) {
   v <- coef(x)
 
   lapply(names(t)[I], function(s) {
+    m <- matrix(0, nrow = 2L, ncol = 1L)
     pattern <- paste0("^", s, "TRUE")
     J <- grepl(pattern, names(v))
-    data <- v[J]
-    names(data) <- NULL
-
-    boolean(x = s, data = data)
+    m[2,1] <- v[J]
+    pattern <- paste0("^", s, "FALSE")
+    J <- grepl(pattern, names(v))
+    if (any(J))
+      m[1,1] <- v[J]
+    boolean(x = s, data = m)
   })
 
 }
