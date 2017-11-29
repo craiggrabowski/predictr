@@ -25,11 +25,12 @@ setClass("Predictor",
 )
 
 as.function.Predictor <- function(x, ...) {
-  ff <- lapply(x@data, function(y) as.function(y, ...))
+  o <- originate(x@data[[1L]])
+  ff <- lapply(x@data[-1L], function(y) as.function(y, ...))
 
   compiler::cmpfun(function(df) {
-    m <- ff[[1]](df)
-    for (f in ff[-1L]) m <- m + f(df)
+    m <- o(df)
+    for (f in ff) m <- m + f(df)
     m
   })
 }
