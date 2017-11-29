@@ -21,7 +21,8 @@ setClass("Lookup",
     if (nrow(object@data) != length(object@levels))
       return("Dimension mismatch between data and levels")
     TRUE
-  }
+  },
+  contains = "Action"
 )
 
 originate.Lookup <- function(x, ...) {

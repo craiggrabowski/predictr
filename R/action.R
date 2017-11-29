@@ -1,6 +1,8 @@
 #' @include predictr.R
 NULL
 
+setClass("Action")
+
 originate <- function(x, ...)
   UseMethod("originate")
 

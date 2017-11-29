@@ -15,7 +15,8 @@ setClass("Vector",
       return("Data can't have missing values")
 
     TRUE
-  }
+  },
+  contains = "Action"
 )
 
 Linear <-

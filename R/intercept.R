@@ -13,7 +13,8 @@ setClass("Intercept",
       return("intercept can't have missing values")
 
     TRUE
-  }
+  },
+  contains = "Action"
 )
 
 #' Returns an intercept object
