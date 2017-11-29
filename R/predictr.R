@@ -19,3 +19,7 @@ NULL
 #' @importFrom stats coef
 #' @importFrom stats terms
 NULL
+
+#' @useDynLib predictr
+#' @importFrom Rcpp sourceCpp
+NULL

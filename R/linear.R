@@ -45,6 +45,12 @@ originate.Linear <- function(x, ...) {
   }
 }
 
+accumulate.Linear <- function(x, ...) {
+  p <- x@data
+  s <- x@name
+  function(m, df) accumulate_linear_cpp(m, p, .subset2(df, s))
+}
+
 as.function.Linear <- function(x, ...) {
   originate.Linear(x, ...)
 }

@@ -18,6 +18,7 @@ Suggests: testthat,
     pryr,
     microbenchmark
 Collate: 
+    'RcppExports.R'
     'predictr.R'
     'action.R'
     'lookup.R'
@@ -26,4 +27,6 @@ Collate:
     'linear.R'
     'lm.R'
     'predictor.R'
-Imports: methods
+Imports: methods,
+    Rcpp
+LinkingTo: Rcpp
