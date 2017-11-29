@@ -40,11 +40,6 @@ originate.Intercept <- function(x, ...) {
   }
 }
 
-#' @export
-as.function.Intercept <- function(x, ...) {
-  originate.Intercept(x, ...)
-}
-
 #' Return a list of intercept objects
 #'
 #' \code{as.intercept_list} returns a list of intercept objects.

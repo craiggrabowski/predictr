@@ -3,6 +3,11 @@ NULL
 
 setClass("Action")
 
+#' @export
+as.function.Action <- function(x, ...) {
+  originate(x, ...)
+}
+
 originate <- function(x, ...)
   UseMethod("originate")
 

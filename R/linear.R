@@ -52,10 +52,6 @@ accumulate.Linear <- function(x, ...) {
   function(m, df) accumulate_linear_cpp(m, p, .subset2(df, s))
 }
 
-as.function.Linear <- function(x, ...) {
-  originate.Linear(x, ...)
-}
-
 #' A method to generate linear objects
 #'
 #' \code{as.linear_list} returns a list of linear objects.

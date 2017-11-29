@@ -38,10 +38,6 @@ originate.Lookup <- function(x, ...) {
   }
 }
 
-as.function.Lookup <- function(x, ...) {
-  originate.Lookup(x, ...)
-}
-
 #' Returns a lookup object
 #'
 #' \code{lookup} returns a lookup object.
