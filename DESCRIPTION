@@ -1,7 +1,7 @@
 Package: predictr
 Type: Package
 Title: Objects For Fast Predictions Of Common Model Types
-Version: 0.0.0.9000
+Version: 0.0.1
 Author: person("Craig", "Grabowski", 
     email = "craig.a.grabowski@gmail.com",             
     role = c("aut", "cre"))
