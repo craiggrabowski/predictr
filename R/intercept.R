@@ -1,4 +1,5 @@
 #' @include predictr.R
+#' @include action.R
 NULL
 
 
@@ -27,9 +28,8 @@ intercept <- function(x = 0) {
   Intercept(data = as.numeric(x))
 }
 
-
 #' @export
-as.function.Intercept <- function(x, ...) {
+originate.Intercept <- function(x, ...) {
   function(df) {
     matrix(x@data,
            nrow = nrow(df),
@@ -37,6 +37,11 @@ as.function.Intercept <- function(x, ...) {
            byrow = TRUE
     )
   }
+}
+
+#' @export
+as.function.Intercept <- function(x, ...) {
+  originate.Intercept(x, ...)
 }
 
 #' Return a list of intercept objects

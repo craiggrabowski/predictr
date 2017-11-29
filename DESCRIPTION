@@ -19,6 +19,7 @@ Suggests: testthat,
     microbenchmark
 Collate: 
     'predictr.R'
+    'action.R'
     'lookup.R'
     'boolean.R'
     'intercept.R'

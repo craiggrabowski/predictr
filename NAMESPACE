@@ -2,6 +2,7 @@
 
 S3method(as.function,Intercept)
 S3method(as.intercept_list,default)
+S3method(originate,Intercept)
 export(as.boolean_list)
 export(as.intercept_list)
 export(as.linear_list)
