@@ -24,7 +24,7 @@ setClass("Lookup",
   }
 )
 
-as.function.Lookup <- function(x, ...) {
+originate.Lookup <- function(x, ...) {
 
   n <- x@name
   m <- x@data
@@ -37,6 +37,9 @@ as.function.Lookup <- function(x, ...) {
   }
 }
 
+as.function.Lookup <- function(x, ...) {
+  originate.Lookup(x, ...)
+}
 
 #' Returns a lookup object
 #'
