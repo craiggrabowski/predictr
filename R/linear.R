@@ -36,7 +36,7 @@ linear <- function(x, data = 0) {
   Linear(name = x, data = as.numeric(data))
 }
 
-as.function.Linear <- function(x, ...) {
+originate.Linear <- function(x, ...) {
   name <- x@name
   v <- x@data
 
@@ -45,6 +45,9 @@ as.function.Linear <- function(x, ...) {
   }
 }
 
+as.function.Linear <- function(x, ...) {
+  originate.Linear(x, ...)
+}
 
 #' A method to generate linear objects
 #'
