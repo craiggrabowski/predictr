@@ -51,12 +51,12 @@ Second, the `predict()` method is now faster for large data:
 a <- data.frame(x = seq(100000))
 microbenchmark::microbenchmark(predict(model, a), predict(x, a))
 #> Unit: milliseconds
-#>               expr       min        lq      mean    median        uq
-#>  predict(model, a) 19.921669 24.164629 33.914053 26.495027 29.274725
-#>      predict(x, a)  2.579478  3.006354  5.845861  3.518158  5.264399
+#>               expr       min        lq     mean    median        uq
+#>  predict(model, a) 18.770114 21.573490 35.38808 24.744998 30.277616
+#>      predict(x, a)  1.821072  2.127459  2.79398  2.384389  2.605109
 #>        max neval
-#>  103.05793   100
-#>   63.20291   100
+#>  94.634500   100
+#>   9.786381   100
 ```
 
 Third, the new object supports a conversion to a function using `as.function()`. This return value of this converion is a function which implements `predict()` as well, only now the compute time is much smaller:
@@ -65,9 +65,9 @@ Third, the new object supports a conversion to a function using `as.function()`.
 f <- as.function(x)
 microbenchmark::microbenchmark(predict(x, a), f(a))
 #> Unit: microseconds
-#>           expr      min        lq     mean    median       uq      max
-#>  predict(x, a) 2532.859 2654.7950 3098.863 2906.9775 3456.623  4614.86
-#>           f(a)  505.241  512.2505 1211.987  546.8825  780.943 49529.01
+#>           expr      min       lq      mean   median       uq      max
+#>  predict(x, a) 1793.679 2000.526 2432.2403 2190.113 2657.898 5245.185
+#>           f(a)  341.660  370.430  549.6333  397.025  468.387 2301.677
 #>  neval
 #>    100
 #>    100
