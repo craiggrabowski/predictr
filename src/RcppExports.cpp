@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// originate_intercept_cpp
+NumericVector originate_intercept_cpp(int r, NumericVector parameters);
+RcppExport SEXP _predictr_originate_intercept_cpp(SEXP rSEXP, SEXP parametersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type parameters(parametersSEXP);
+    rcpp_result_gen = Rcpp::wrap(originate_intercept_cpp(r, parameters));
+    return rcpp_result_gen;
+END_RCPP
+}
 // accumulate_linear_cpp
 NumericMatrix accumulate_linear_cpp(NumericMatrix m, NumericVector parameters, NumericVector v);
 RcppExport SEXP _predictr_accumulate_linear_cpp(SEXP mSEXP, SEXP parametersSEXP, SEXP vSEXP) {
@@ -20,6 +32,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_predictr_originate_intercept_cpp", (DL_FUNC) &_predictr_originate_intercept_cpp, 2},
     {"_predictr_accumulate_linear_cpp", (DL_FUNC) &_predictr_accumulate_linear_cpp, 3},
     {NULL, NULL, 0}
 };

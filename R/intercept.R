@@ -31,12 +31,9 @@ intercept <- function(x = 0) {
 
 #' @export
 originate.Intercept <- function(x, ...) {
+  data <- x@data
   function(df) {
-    matrix(x@data,
-           nrow = nrow(df),
-           ncol = length(x@data),
-           byrow = TRUE
-    )
+    originate_intercept_cpp(nrow(df), data)
   }
 }
 
