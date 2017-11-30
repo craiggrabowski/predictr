@@ -1,4 +1,7 @@
 #include <Rcpp.h>
+#include <iterator>
+#include <algorithm>
+
 using namespace Rcpp;
 
 // [[Rcpp::export]]
@@ -7,11 +10,17 @@ NumericVector originate_intercept_cpp(
   int c = parameters.length();
   NumericMatrix m(r, c);
 
-  for (int j = 0; j < c; ++j) {
-    double x = parameters[j];
-    for (int i = 0; i < r; ++i) {
-      m(i,j) = x;
-    }
+  NumericMatrix::iterator begin = m.begin();
+  NumericMatrix::iterator end = begin;
+  std::advance(end, r);
+
+  NumericVector::const_iterator pb = parameters.cbegin();
+  NumericVector::const_iterator pe = parameters.cend();
+
+  for (; pb < pe; ++pb) {
+    std::fill(begin, end, *pb);
+    begin = end;
+    std::advance(end, r);
   }
 
   return m;
