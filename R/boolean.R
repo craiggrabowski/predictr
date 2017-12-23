@@ -6,10 +6,21 @@ NULL
 #'
 #' \code{boolean} returns an boolean object.
 #'
+#' This function returns an object associated with logical or
+#' boolean terms in a linear model.
+#' The object stores the parameters as a matrix,
+#' which the user supplies as the \code{data} parameter.
+#' The first row contains the parameters associated with
+#' a value of \code{FALSE},
+#' and the second row contains the parameters associated
+#' with a value of \code{TRUE}.
+#' In many models,
+#' there are no parameters for \code{FALSE},
+#' in which case all of the values in the row are zero.
 #'
 #' @param x Name of object
 #'
-#' @param data matrix
+#' @param data Matrix of parameters
 #'
 #' @export
 boolean <- function(x, data = matrix()) {
