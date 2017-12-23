@@ -9,8 +9,21 @@ boolean(x, data = matrix())
 \arguments{
 \item{x}{Name of object}
 
-\item{data}{matrix}
+\item{data}{Matrix of parameters}
 }
 \description{
 \code{boolean} returns an boolean object.
+}
+\details{
+This function returns an object associated with logical or
+boolean terms in a linear model.
+The object stores the parameters as a matrix,
+which the user supplies as the \code{data} parameter.
+The first row contains the parameters associated with
+a value of \code{FALSE},
+and the second row contains the parameters associated
+with a value of \code{TRUE}.
+In many models,
+there are no parameters for \code{FALSE},
+in which case all of the values in the row are zero.
 }
