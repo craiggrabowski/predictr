@@ -21,6 +21,15 @@ setClass("Intercept",
 #'
 #' \code{intercept} returns an intercept object.
 #'
+#' This object represents the constant, or intercept,
+#' associated with a linear-based model.
+#' For univariate models,
+#' the intercept is a scalar.
+#' For multivariate models,
+#' the intercept is a vector.
+#' This vector is passed to \code{intercept} using the \code{x}
+#' parameter.
+#'
 #'
 #' @param x Intercept vector (default to 0)
 #'

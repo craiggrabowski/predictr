@@ -12,3 +12,13 @@ intercept(x = 0)
 \description{
 \code{intercept} returns an intercept object.
 }
+\details{
+This object represents the constant, or intercept,
+associated with a linear-based model.
+For univariate models,
+the intercept is a scalar.
+For multivariate models,
+the intercept is a vector.
+This vector is passed to \code{intercept} using the \code{x}
+parameter.
+}
